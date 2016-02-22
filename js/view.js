@@ -1,14 +1,15 @@
 "use strict"
 
 function createView(_document, game) {
+    let activeSquareId = null
 
     function onDragStart(event) {
         event.target.classList.add('dragging')
-        event.dataTransfer.setData('text/plain', event.target.dataset.squareId)
+        activeSquareId = event.target.dataset.squareId
     }
 
     function onDragOver(event) {
-        const srcId = event.dataTransfer.getData('text/plain')
+        const srcId = activeSquareId
         const square = event.currentTarget
         const destId = square.id
         if (destId && game.isValidMove(srcId, destId)) {
@@ -18,7 +19,7 @@ function createView(_document, game) {
     }
 
     function onDragEnter(event) {
-        const srcId = event.dataTransfer.getData('text/plain')
+        const srcId = activeSquareId
         const square = event.currentTarget
         const destId = square.id
         if (destId && game.isValidMove(srcId, destId)) {
@@ -33,7 +34,7 @@ function createView(_document, game) {
     }
 
     function onDrop(event) {
-        const srcId = event.dataTransfer.getData('text/plain')
+        const srcId = activeSquareId
         const square = event.currentTarget
         const destId = square.id
         square.classList.remove('dropzone')
@@ -45,6 +46,7 @@ function createView(_document, game) {
 
     function onDragEnd(event) {
         event.target.classList.remove('dragging')
+        activeSquareId = null
     }
 
     function getGlyphForPiece(piece) {
