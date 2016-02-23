@@ -1,21 +1,21 @@
 "use strict"
 
-const King   = Symbol('King')
-const Queen  = Symbol('Queen')
-const Rook   = Symbol('Rook')
-const Bishop = Symbol('Bishop')
-const Knight = Symbol('Knight')
-const Pawn   = Symbol('Pawn')
+export const King   = Symbol('King')
+export const Queen  = Symbol('Queen')
+export const Rook   = Symbol('Rook')
+export const Bishop = Symbol('Bishop')
+export const Knight = Symbol('Knight')
+export const Pawn   = Symbol('Pawn')
 
-const White = Symbol('White')
-const Black = Symbol('Black')
+export const White = Symbol('White')
+export const Black = Symbol('Black')
 
-const Pieces = [King, Queen, Rook, Bishop, Knight, Pawn]
-const Sides = [White, Black]
-const Ranks = [1, 2, 3, 4, 5, 6, 7, 8]
-const Files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+export const Pieces = [King, Queen, Rook, Bishop, Knight, Pawn]
+export const Sides = [White, Black]
+export const Ranks = [1, 2, 3, 4, 5, 6, 7, 8]
+export const Files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 
-function createGame(onChange) {
+export function createGame(onChange) {
     let board = (function() {
         const K = King, Q = Queen, R = Rook, B = Bishop, N = Knight, p = Pawn
         const w = (piece) => ({ side: White, piece })

@@ -1,6 +1,8 @@
 "use strict"
 
-function createView(_document, game) {
+import {createGame, Pieces, Sides, Files, Ranks} from 'model'
+
+export function createView(_document, game) {
     let activeSquareId = null
 
     function onDragStart(event) {
@@ -89,7 +91,7 @@ function createView(_document, game) {
     }
 }
 
-function initialize() {
+export function initialize() {
     var onChange = () => view.render()
     var game = createGame(onChange)
     var view = createView(document, game)
