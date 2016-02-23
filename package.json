@@ -1,0 +1,35 @@
+{
+  "name": "chess",
+  "version": "1.0.0",
+  "description": "Simple browser-based chess game.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node_modules/.bin/babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zacaway/chess.git"
+  },
+  "author": "Mike Talbot <mike.talbot@zacaway.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zacaway/chess/issues"
+  },
+  "homepage": "https://github.com/zacaway/chess#readme",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-plugin-transform-es2015-modules-umd": "^6.5.0",
+    "babel-plugin-transform-runtime": "^6.5.2",
+    "babel-preset-es2015": "^6.5.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-sourcemaps": "^1.6.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.5.0",
+    "babel-runtime": "^6.5.0"
+  }
+}
