@@ -55,6 +55,7 @@ export function createGame(onChange) {
         const dest = getAt(destId)
 
         if (!src) return false;
+        if (src.side !== turn) return false;
         if (dest && src.side === dest.side) return false;
 
         if (!dest) return true;
