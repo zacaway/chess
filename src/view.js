@@ -1,6 +1,6 @@
 "use strict"
 
-import {createGame, Pieces, Sides, Files, Ranks} from 'model'
+import {createGame, Pieces, Sides, Files, Ranks, White, Black} from 'model'
 
 export function createView(_document, game) {
     let activeSquareId = null
@@ -83,6 +83,14 @@ export function createView(_document, game) {
                 square.ondragleave = onDragLeave
                 square.ondrop = onDrop
             }
+        }
+
+        if (game.getTurn() === White) {
+            _document.getElementById('whiteTurn').classList.add('visible')
+            _document.getElementById('blackTurn').classList.remove('visible')
+        } else {
+            _document.getElementById('whiteTurn').classList.remove('visible')
+            _document.getElementById('blackTurn').classList.add('visible')
         }
     }
 

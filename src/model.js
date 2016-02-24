@@ -50,6 +50,10 @@ export function createGame(onChange) {
         board[indicies[0]][indicies[1]] = piece
     }
 
+    function getTurn() {
+        return turn
+    }
+
     function isValidMove(srcId, destId) {
         const src = getAt(srcId)
         const dest = getAt(destId)
@@ -75,6 +79,7 @@ export function createGame(onChange) {
     return {
         getAt,
         isValidMove,
-        move
+        move,
+        getTurn
     }
 }
