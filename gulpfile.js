@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
-var livereload = require('gulp-livereload');
+var liveserver = require('gulp-live-server');
 var ghPages = require('gulp-gh-pages');
 
 gulp.task('default', ['js', 'css', 'html', 'polyfill']);
@@ -37,10 +37,14 @@ gulp.task('deploy', function () {
 });
 
 gulp.task('watch', function () {
+    var server = liveserver.static('dist', 3000);
+    server.start();
+
     gulp.watch('src/**/*.js', ['js']);
     gulp.watch('src/**/*.css', ['css']);
     gulp.watch('src/**/*.html', ['html']);
 
-    livereload.listen();
-    gulp.watch('dist/**').on('change', livereload.changed);
+    gulp.watch('dist/**', function(file) {
+        server.notify.apply(server, [file]);
+    });
 });
