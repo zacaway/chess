@@ -64,11 +64,16 @@
             board[indicies[0]][indicies[1]] = piece;
         }
 
+        function getTurn() {
+            return turn;
+        }
+
         function isValidMove(srcId, destId) {
             var src = getAt(srcId);
             var dest = getAt(destId);
 
             if (!src) return false;
+            if (src.side !== turn) return false;
             if (dest && src.side === dest.side) return false;
 
             if (!dest) return true;
@@ -88,7 +93,8 @@
         return {
             getAt: getAt,
             isValidMove: isValidMove,
-            move: move
+            move: move,
+            getTurn: getTurn
         };
     }
 });
@@ -234,6 +240,14 @@
                         throw _iteratorError;
                     }
                 }
+            }
+
+            if (game.getTurn() === _model.White) {
+                _document.getElementById('whiteTurn').classList.add('visible');
+                _document.getElementById('blackTurn').classList.remove('visible');
+            } else {
+                _document.getElementById('whiteTurn').classList.remove('visible');
+                _document.getElementById('blackTurn').classList.add('visible');
             }
         }
 
