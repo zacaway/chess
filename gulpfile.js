@@ -5,7 +5,7 @@ var concat = require('gulp-concat');
 var liveserver = require('gulp-live-server');
 var ghPages = require('gulp-gh-pages');
 
-gulp.task('default', ['js', 'css', 'html', 'polyfill']);
+gulp.task('default', ['js', 'css', 'html', 'vendor']);
 
 gulp.task('js', function () {
   return gulp.src('src/**/*.js')
@@ -26,9 +26,11 @@ gulp.task('html', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('polyfill', function () {
-  return gulp.src('node_modules/babel-polyfill/dist/polyfill.min.js')
-    .pipe(gulp.dest('dist'));
+gulp.task('vendor', function () {
+  return gulp.src([
+    'node_modules/babel-polyfill/dist/polyfill.min.js',
+    'node_modules/drag-drop-webkit-mobile/ios-drag-drop.js'
+  ]).pipe(gulp.dest('dist'));
 });
 
 gulp.task('deploy', function () {
@@ -36,7 +38,7 @@ gulp.task('deploy', function () {
     .pipe(ghPages());
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['default'], function () {
     var server = liveserver.static('dist', 3000);
     server.start();
 
